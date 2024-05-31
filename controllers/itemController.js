@@ -4,7 +4,7 @@ const { Op } = require('sequelize');
 exports.getItems = async (_, res) => {
   try {
     const items = await Item.findAll();
-    res.send(items);
+    res.status(200).send(items);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -16,7 +16,7 @@ exports.getItemById = async (req, res) => {
     if (!item) {
       return res.status(404).send({ error: 'Item not found' });
     }
-    res.send(item);
+    res.status(200).send(item);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -49,7 +49,7 @@ exports.updateItem = async (req, res) => {
     item.startingPrice = startingPrice;
     item.endTime = endTime;
     await item.save();
-    res.send(item);
+    res.sttaus(200).send(item);
   } catch (error) {
     res.status(400).send(error);
   }
@@ -65,7 +65,7 @@ exports.deleteItem = async (req, res) => {
       return res.status(403).send({ error: 'Access denied' });
     }
     await item.destroy();
-    res.send({ message: 'Item deleted' });
+    res.status(204).send({ message: 'Item deleted' });
   } catch (error) {
     res.status(400).send(error);
   }

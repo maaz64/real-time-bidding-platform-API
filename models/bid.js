@@ -14,15 +14,6 @@ const Bid = sequelize.define('Bid', {
   updatedAt: false,
 });
 
-// Bid.belongsTo(User, { foreignKey: 'userId' });
-// Bid.belongsTo(Item, { foreignKey: 'itemId' });
-
-// Bid store UserId column
-// User.hasMany(Bid, {
-// });
-// Bid.belongsTo(User);
-
-// Bid store ItemIdcolumn
 Item.hasMany(Bid, {
 });
 Bid.belongsTo(Item);
